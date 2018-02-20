@@ -1,4 +1,4 @@
-class Key extends React.Component {
+class KeyButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = { //updates rgb state based on props (red, green, blue)
@@ -17,7 +17,7 @@ class Key extends React.Component {
   }
   render() {
     return (
-      <button
+      <Button
         style={{background:'rgb(' + this.state.red + ','
         + this.state.green + ',' + this.state.blue + ')'}}
         onClick={this.updateColor}
@@ -27,6 +27,7 @@ class Key extends React.Component {
     );
   } //end render
 } //end Key
+
 
 class Spacebar extends React.Component {
   constructor(props){
@@ -44,6 +45,24 @@ class Spacebar extends React.Component {
   }
 }
 
+class Letters extends React.Component {
+  const letters = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A',
+  'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+  const letterKeys = letters.map((letter) =>
+    <KeyButton
+      key={letter} letter={letter}
+      addTo={this.props.color} onClick={this.updateColor}
+    />
+  )
+  render() {
+    <div>
+      <div>{letterKeys.slice(0,10)}</div>
+      <div>{letterKeys.slice(10,19)}</div>
+      <div>{letterKeys.slice(19,26)}</div>
+    </div>
+  }
+}
+
 class Board extends React.Component {
   constructor(props) {
     super(props);
@@ -53,17 +72,10 @@ class Board extends React.Component {
     this.setState({currentColor: newColor});
   }
   render() {
-    const letterList = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A',
-    'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
-    const letterMap = letterList.map((letter) => <Key key={letter} letter={letter} /> );
     return (
       <center>
-        <center>{letterMap.slice(0,10)}</center>
-        <center>{letterMap.slice(10,19)}</center>
-        <center>{letterMap.slice(19,26)}</center>
-        <center>
-          <Spacebar onClick={this.changeColor}/>
-        </center>
+        <Letters color={this.state.currentColor}/>
+        <Spacebar onClick={this.changeColor} />
       </center>
     );
   }
