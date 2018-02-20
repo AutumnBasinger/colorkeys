@@ -1,7 +1,7 @@
 class Key extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { //updates rgb state based on props (red, green, blue)
       red: 0,
       green: 0,
       blue: 0
@@ -31,33 +31,39 @@ class Key extends React.Component {
 class Spacebar extends React.Component {
   constructor(props){
     super(props);
-    this.state = {color: 'red'};
-    this.changeColor = this.changeColor.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
-  changeColor() {
-    const newColor = this.state.color == 'red' ? 'green' : 'red';
-    this.setState({color: newColor});
-    console.log(this.state.color);
+  handleClick(e) {
+    const newColor = e.target.value;
+    this.props.onClick(currentColor);
   }
   render() {
     return (
-      <button onClick={this.changeColor}>Spacebar</button>
+      <button onClick={this.handleClick}>Spacebar</button>
     );
   }
 }
 
-const letterList = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A',
-'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
-const letterMap = letterList.map((letter) => <Key letter={letter} /> );
-
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {currentColor: 'red'};
+  }
+  changeColor(newColor) {
+    this.setState({currentColor: newColor});
+  }
   render() {
+    const letterList = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A',
+    'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+    const letterMap = letterList.map((letter) => <Key key={letter} letter={letter} /> );
     return (
       <center>
         <center>{letterMap.slice(0,10)}</center>
         <center>{letterMap.slice(10,19)}</center>
         <center>{letterMap.slice(19,26)}</center>
-        <center><Spacebar /></center>
+        <center>
+          <Spacebar onClick={this.changeColor}/>
+        </center>
       </center>
     );
   }
