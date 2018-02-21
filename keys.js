@@ -1,45 +1,60 @@
-const Spacebar = props => (
-  <button onClick={props.changeColor}>Spacebar</button>
-);
+class KeyParent extends React.Component {
+  constructor(props) { //needs currentColor and letter as props from Board
+    super(props);
+    this.state = {
+      red: 0,
+      green: 0,
+      blue: 0
+    };
+    this.updateKeyColor.bind(this);
+  }
+  updateKeyColor() {
+    if (this.props.currentColor === 'red') {
+      this.setState({red++})
+    } else if (this.props.currentColor === 'green') {
+      this.setState({green++})
+    } else {
+      this.setState({blue++})
+    }
+  }
+  render() {
+    <Key
+      red={this.state.red}
+      green={this.state.green}
+      blue={this.state.blue}
+      letter={this.props.letter}
+      updateKeyColor={this.updateKeyColor} />
+  }
+}
 
 const Key = props => (
   <button
-    style={{background:'rgb(' + props.red + ','
-    + props.blue + ',' + props.green + ')'}}
+    style={{background:'rgb(' + props.red + ',' + props.blue + ',' + props.green + ')'}}
     onClick={props.updateKeyColor}>
       {props.letter}
   </button>
 );
+
+const Spacebar = props => (
+  <button onClick={props.changeColor}>Spacebar</button>
+);
+
+
 
 // const letters = [
 //   'Q','W','E','R','T','Y','U','I','O','P','A','S','D',
 //   'F','G','H','J','K','L','Z','X','C','V','B','N','M'
 // ];
 
-const letters = [
-  'Q','W','E'
-];
+// const letters = [
+//   'Q','W','E'
+// ];
 
 class Board extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      'Q': [0,0,0],
-      'W': [0,0,0],
-      'E': [0,0,0],
-      currentColor: 'red'
-    };
-    this.updateKeyColor.bind(this)
+    this.state = {currentColor: 'red'};
     this.changeColor.bind(this)
-  }
-  updateKeyColor(letter) {
-    if (this.state.currentColor === 'red') {
-      this.setState({ letter: this.state.letter[0]++ })
-    } else if (this.state.currentColor === 'green') {
-      this.setState({ letter: this.state.letter[1]++ })
-    } else {
-      this.setState({ letter: this.state.letter[2]++ })
-    }
   }
   changeColor() {
     if(this.state.currentColor === 'red') {
@@ -53,14 +68,7 @@ class Board extends React.Component {
   render() {
     return (
       <center>
-        {letters.map((letter) =>
-          <Key
-            key={letter} letter={letter} //letter is 'Q'
-            updateKeyColor={this.updateKeyColor}
-            red={this.state.letter[0]} //1st item, 0
-            green={this.state.letter[1]} //2nd item, 0
-            blue={this.state.letter[2]} />)
-        }
+        <KeyParent currentColor={this.state.currentColor} letter={'Q'} />)
         <Spacebar changeColor={this.changeColor} />
       </center>
     );
