@@ -8,26 +8,28 @@ class KeyParent extends React.Component {
     };
     this.updateKeyColor.bind(this);
   }
-  updateKeyColor() {
-    if (this.props.currentColor === 'red') {
-      this.setState({red++})
-    } else if (this.props.currentColor === 'green') {
-      this.setState({green++})
-    } else {
-      this.setState({blue++})
+  updateKeyColor(props) {
+    if (props.currentColor === 'red') {
+      this.setState({red: red+1})
+    } else if (props.currentColor === 'green') {
+      this.setState({green: green+1})
+    } else if (props.currentColor === 'blue') {
+      this.setState({blue: blue+1})
     }
   }
   render() {
-    <Key
-      red={this.state.red}
-      green={this.state.green}
-      blue={this.state.blue}
-      letter={this.props.letter}
-      updateKeyColor={this.updateKeyColor} />
+    return (
+      <Key
+        red={this.state.red}
+        green={this.state.green}
+        blue={this.state.blue}
+        updateKeyColor={this.updateKeyColor}
+        letter={this.props.letter} />
+    );
   }
 }
 
-const Key = props => (
+const Key = (props) => (
   <button
     style={{background:'rgb(' + props.red + ',' + props.blue + ',' + props.green + ')'}}
     onClick={props.updateKeyColor}>
@@ -35,20 +37,9 @@ const Key = props => (
   </button>
 );
 
-const Spacebar = props => (
+const Spacebar = (props) => (
   <button onClick={props.changeColor}>Spacebar</button>
 );
-
-
-
-// const letters = [
-//   'Q','W','E','R','T','Y','U','I','O','P','A','S','D',
-//   'F','G','H','J','K','L','Z','X','C','V','B','N','M'
-// ];
-
-// const letters = [
-//   'Q','W','E'
-// ];
 
 class Board extends React.Component {
   constructor(props) {
@@ -56,12 +47,12 @@ class Board extends React.Component {
     this.state = {currentColor: 'red'};
     this.changeColor.bind(this)
   }
-  changeColor() {
-    if(this.state.currentColor === 'red') {
+  changeColor(state) {
+    if(state.currentColor === 'red') {
       this.setState({ currentColor: 'green' })
-    } else if (this.state.currentColor === 'green') {
+    } else if (state.currentColor === 'green') {
       this.setState({ currentColor: 'blue' })
-    } else {
+    } else if (state.currentColor === 'blue') {
       this.setState({ currentColor: 'red' })
     }
   }
