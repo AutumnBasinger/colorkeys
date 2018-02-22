@@ -1,20 +1,21 @@
 class KeyParent extends React.Component {
   constructor(props) { //needs currentColor and letter as props from Board
-    super(props);
+    super(props); //this.props.currentColor
+    this.props = props
     this.state = {
       red: 0,
       green: 0,
       blue: 0
     };
-    this.updateKeyColor.bind(this);
+    this.updateKeyColor = this.updateKeyColor.bind(this);
   }
-  updateKeyColor(props) {
-    if (props.currentColor === 'red') {
-      this.setState({red: red+1})
-    } else if (props.currentColor === 'green') {
-      this.setState({green: green+1})
-    } else if (props.currentColor === 'blue') {
-      this.setState({blue: blue+1})
+  updateKeyColor() {
+    if (this.props.currentColor === 'red') {
+      this.setState({red: this.state.red+51})
+    } else if (this.props.currentColor === 'green') {
+      this.setState({green: this.state.green+51})
+    } else if (this.props.currentColor === 'blue') {
+      this.setState({blue: this.state.blue+51})
     }
   }
   render() {
@@ -45,14 +46,14 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {currentColor: 'red'};
-    this.changeColor.bind(this)
+    this.changeColor = this.changeColor.bind(this)
   }
-  changeColor(state) {
-    if(state.currentColor === 'red') {
+  changeColor() {
+    if(this.state.currentColor === 'red') {
       this.setState({ currentColor: 'green' })
-    } else if (state.currentColor === 'green') {
+    } else if (this.state.currentColor === 'green') {
       this.setState({ currentColor: 'blue' })
-    } else if (state.currentColor === 'blue') {
+    } else if (this.state.currentColor === 'blue') {
       this.setState({ currentColor: 'red' })
     }
   }
@@ -60,6 +61,7 @@ class Board extends React.Component {
     return (
       <center>
         <KeyParent currentColor={this.state.currentColor} letter={'Q'} />)
+        <KeyParent currentColor={this.state.currentColor} letter={'W'} />)
         <Spacebar changeColor={this.changeColor} />
       </center>
     );
