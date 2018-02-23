@@ -1,3 +1,12 @@
+const spacebarStyle = {
+  width: 260,
+  height: 60,
+  margin: 2,
+  fontSize: 15,
+  color: 'white',
+  background: 'black'
+};
+
 class KeyParent extends React.Component {
   constructor(props) { //needs currentColor and letter as props from Board
     super(props); //this.props.currentColor
@@ -32,14 +41,15 @@ class KeyParent extends React.Component {
 
 const Key = (props) => (
   <button
-    style={{background:'rgb(' + props.red + ',' + props.blue + ',' + props.green + ')'}}
+    style={{width: 60, height: 60, margin: 2, color: 'white', fontSize: 15,
+      background:'rgb(' + props.red + ',' + props.green + ',' + props.blue + ')'}}
     onClick={props.updateKeyColor}>
       {props.letter}
   </button>
 );
 
 const Spacebar = (props) => (
-  <button onClick={props.changeColor}>Spacebar</button>
+  <button style={spacebarStyle} onClick={props.changeColor}>Space</button>
 );
 
 class Board extends React.Component {
@@ -58,11 +68,17 @@ class Board extends React.Component {
     }
   }
   render() {
+    const letterList = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A',
+    'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+    const letterMap = letterList.map((letter) =>
+      <KeyParent key={letter} letter={letter} currentColor={this.state.currentColor} /> );
     return (
       <center>
-        <KeyParent currentColor={this.state.currentColor} letter={'Q'} />)
-        <KeyParent currentColor={this.state.currentColor} letter={'W'} />)
-        <Spacebar changeColor={this.changeColor} />
+        <div style={{height:150}}></div>
+        <center>{letterMap.slice(0,10)}</center>
+        <center>{letterMap.slice(10,19)}</center>
+        <center>{letterMap.slice(19,26)}</center>
+        <center><Spacebar changeColor={this.changeColor} /></center>
       </center>
     );
   } //end render
