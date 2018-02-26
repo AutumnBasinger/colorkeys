@@ -58,6 +58,12 @@ class Board extends React.Component {
     this.state = {currentColor: 'red'};
     this.changeColor = this.changeColor.bind(this)
   }
+  handleKeyPress () {
+    console.log('key pressed')
+  }
+  componentDidMount() {
+    window.addEventListener('keypress', this.handleKeyPress)
+  }
   changeColor() {
     if(this.state.currentColor === 'red') {
       this.setState({ currentColor: 'green' })
