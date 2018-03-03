@@ -27,8 +27,8 @@ class KeyParent extends React.Component {
       this.setState({blue: this.state.blue+51})
     }
   }
-  componentDidUpdate() {
-    if (this.props.letter === this.props.lastkey) {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.letter === nextProps.lastkey) {
       this.updateKeyColor() //updaiting multiple times, fix this
     }
   }
@@ -65,12 +65,16 @@ class Board extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
   handleKeyPress () {
+    if (event.code[3] === 'c') {
+      this.changeColor()
+    }
     this.setState({ lastkey: event.code[3] }); //one letter or 'c' if Space
   }
   componentDidMount() {
     window.addEventListener('keypress', this.handleKeyPress);
   }
   changeColor() {
+    this.setState({lastkey: null})
     if(this.state.currentColor === 'red') {
       this.setState({ currentColor: 'green' })
     } else if (this.state.currentColor === 'green') {
