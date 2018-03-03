@@ -8,7 +8,7 @@ const spacebarStyle = {
 };
 
 class KeyParent extends React.Component {
-  constructor(props) { //needs currentColor and letter as props from Board
+  constructor(props) { //takes currentColor, letter, and lastkey as props from Board
     super(props); //this.props.currentColor
     this.props = props
     this.state = {
@@ -25,6 +25,11 @@ class KeyParent extends React.Component {
       this.setState({green: this.state.green+51})
     } else if (this.props.currentColor === 'blue') {
       this.setState({blue: this.state.blue+51})
+    }
+  }
+  componentDidUpdate() {
+    if (this.props.letter === this.props.lastkey) {
+      this.updateKeyColor() //updaiting multiple times, fix this
     }
   }
   render() {
@@ -55,14 +60,15 @@ const Spacebar = (props) => (
 class Board extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {currentColor: 'red'};
-    this.changeColor = this.changeColor.bind(this)
+    this.state = {currentColor: 'red', lastkey: null};
+    this.changeColor = this.changeColor.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
   handleKeyPress () {
-    console.log('key pressed')
+    this.setState({ lastkey: event.code[3] }); //one letter or 'c' if Space
   }
   componentDidMount() {
-    window.addEventListener('keypress', this.handleKeyPress)
+    window.addEventListener('keypress', this.handleKeyPress);
   }
   changeColor() {
     if(this.state.currentColor === 'red') {
@@ -70,14 +76,14 @@ class Board extends React.Component {
     } else if (this.state.currentColor === 'green') {
       this.setState({ currentColor: 'blue' })
     } else if (this.state.currentColor === 'blue') {
-      this.setState({ currentColor: 'red' })
+      this.setState({ currentColor: 'red' });
     }
   }
   render() {
     const letterList = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A',
     'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
     const letterMap = letterList.map((letter) =>
-      <KeyParent key={letter} letter={letter} currentColor={this.state.currentColor} /> );
+      <KeyParent key={letter} letter={letter} currentColor={this.state.currentColor} lastkey={this.state.lastkey}/> );
     return (
       <center>
         <div style={{height:150}}></div>
