@@ -4,8 +4,6 @@ import { Spacebar } from './components/Spacebar.js'
 import { KeyParent } from './components/KeyParent.js'
 import { InitialMessage } from './components/InitialMessage.js'
 
-
-
 const letterList = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A',
 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
 
@@ -15,12 +13,13 @@ class App extends Component {
     this.state = {
       currentColor: 'red',
       lastkey: null,
-      spaceText: null};
+      spaceText: 'Adding red'};
     this.changeColor = this.changeColor.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
   handleKeyPress (e) {
-    if (e.code[3] === 'c') { //event code for spacebar
+    console.log(e)
+    if (e.code[3] === 'c' || e.code[3] === ' ') { //event code for spacebar
       this.changeColor()
     }
     this.setState({ lastkey: e.code[3] });
@@ -43,7 +42,7 @@ class App extends Component {
       <KeyParent key={letter} letter={letter} currentColor={this.state.currentColor} lastkey={this.state.lastkey}/> );
     return (
       <center>
-        <InitialMessage />
+        <InitialMessage handleKeyPress={this.handleKeyPress}/>
         <center>{letterMap.slice(0,10)}</center>
         <center>{letterMap.slice(10,19)}</center>
         <center>{letterMap.slice(19,26)}</center>
