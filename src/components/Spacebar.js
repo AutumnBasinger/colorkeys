@@ -4,13 +4,13 @@ const spacebarStyle = {
   width: 260,
   height: 60,
   margin: 2,
-  fontSize: 18,
+  fontSize: 20,
   color: 'white',
   background: 'black',
-  //borderColor: 'darkgrey',
+  border: 'none',
   borderRadius: 6
 };
 
 export const Spacebar = (props) => {
-  return (<button style={spacebarStyle} onClick={props.changeColor}>Space</button>);
+  return (<button style={spacebarStyle}>{props.text}</button>);
 }

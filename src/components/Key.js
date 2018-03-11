@@ -4,10 +4,10 @@ const keyStyle = {
   width: 60,
   height: 60,
   margin: 2,
-  fontSize: 18,
+  fontSize: 20,
   color: 'white',
-  borderColor: 'darkgrey',
-  borderRadius: 6
+  border: 'none',
+  borderRadius: 6,
 };
 
 export const Key = (props) => {
@@ -17,11 +17,10 @@ export const Key = (props) => {
     margin: keyStyle.margin,
     fontSize: keyStyle.fontSize,
     color: keyStyle.color,
-    //borderColor: keyStyle.borderColor,
+    border: keyStyle.border,
     borderRadius: keyStyle.borderRadius,
     background:'rgb(' + props.red + ',' + props.green + ',' + props.blue + ')'
-  }}
-    onClick={props.updateKeyColor}>
+  }}>
       {props.letter}
   </button>);
 }
