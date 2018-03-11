@@ -1,8 +1,6 @@
 import React from 'react';
 
-const finalText = 'Type something and watch the keys change!'
-
-export class InitialMessage extends React.Component {
+export class AppearingText extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,16 +14,15 @@ export class InitialMessage extends React.Component {
     this.setState({timer: num})
   }
   handleChange() {
-    if (this.state.currentText.length === finalText.length) {
+    if (this.state.currentText.length === this.props.finalText.length) {
       clearInterval(this.state.timer)
     }
-    console.log(this.state.currentText)
     const length = (this.state.currentText.length)
-    this.setState({ currentText: finalText.substring(0,length+1) });
-    if (length >= finalText.length) {
+    this.setState({ currentText: this.props.finalText.substr(0,length+1) });
+    if (length >= this.props.finalText.length) {
       return
     }
-    this.props.handleKeyPress({ code:('key' + finalText[length].toUpperCase()) })
+    this.props.handleKeyPress({ code:('key' + this.props.finalText[length].toUpperCase()) })
   }
   render() {
     return (

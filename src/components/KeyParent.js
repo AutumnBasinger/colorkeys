@@ -22,7 +22,7 @@ export class KeyParent extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.letter === nextProps.lastkey) {
-      this.updateKeyColor() //updaiting multiple times, fix this
+      this.updateKeyColor()
     }
   }
   render() {

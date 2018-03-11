@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { Spacebar } from './components/Spacebar.js'
 import { KeyParent } from './components/KeyParent.js'
-import { InitialMessage } from './components/InitialMessage.js'
+import { AppearingText } from './components/AppearingText.js'
+import { Input } from './components/Input.js'
+
 
 const letterList = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A',
 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
@@ -18,7 +20,6 @@ class App extends Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
   handleKeyPress (e) {
-    console.log(e)
     if (e.code[3] === 'c' || e.code[3] === ' ') { //event code for spacebar
       this.changeColor()
     }
@@ -42,11 +43,12 @@ class App extends Component {
       <KeyParent key={letter} letter={letter} currentColor={this.state.currentColor} lastkey={this.state.lastkey}/> );
     return (
       <center>
-        <InitialMessage handleKeyPress={this.handleKeyPress}/>
+        <Input />
         <center>{letterMap.slice(0,10)}</center>
         <center>{letterMap.slice(10,19)}</center>
         <center>{letterMap.slice(19,26)}</center>
         <Spacebar text={this.state.spaceText}/>
+        <AppearingText finalText='Type something and watch the keys change colors!' handleKeyPress={this.handleKeyPress}/>
       </center>
     );
   } //end render
