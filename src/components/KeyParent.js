@@ -4,34 +4,21 @@ import { Key } from './Key.js'
 export class KeyParent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      red: 0,
-      green: 0,
-      blue: 0
-    };
-    this.updateKeyColor = this.updateKeyColor.bind(this);
-  }
-  updateKeyColor() {
-    if (this.props.currentColor === 'red') {
-      this.setState({red: this.state.red+51})
-    } else if (this.props.currentColor === 'green') {
-      this.setState({green: this.state.green+51})
-    } else if (this.props.currentColor === 'blue') {
-      this.setState({blue: this.state.blue+51})
-    }
-  }
-  componentWillReceiveProps(nextProps) {
-    if (this.props.letter === nextProps.lastkey) {
-      this.updateKeyColor()
-    }
+    this.state = {red: 0, green: 0, blue: 0};
   }
   render() {
+    let colors = [ [ ], [ ], [ ] ]
+    var words = this.props.currentText.split(' ')
+    for (var i=0; i<words.length; i++) {
+      colors[i%3].push(words[i])
+    }
+    //figure out total red, green, and blue from current text
+    //update state
     return (
       <Key
         red={this.state.red}
         green={this.state.green}
         blue={this.state.blue}
-        updateKeyColor={this.updateKeyColor}
         letter={this.props.letter} />
     );
   }

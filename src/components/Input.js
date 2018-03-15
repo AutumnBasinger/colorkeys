@@ -10,18 +10,41 @@ const textareaStyle = {
 export class Input extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {userInput: ''};
+    this.state = {
+      currentText: '',
+      timer: null }
     this.handleUserInput = this.handleUserInput.bind(this);
+    this.handleInitialText = this.handleInitialText.bind(this);
   }
+
+  componentDidMount() {
+    const timerID = setInterval(this.handleInitialText, 80);
+    this.setState({timer: timerID})
+  }
+
+  handleInitialText() {
+    if (this.state.currentText.length === this.props.initialText.length) {
+      clearInterval(this.state.timer)}
+    const length = (this.state.currentText.length)
+    this.setState({ currentText: this.props.initialText.substr(0,length+1) });
+    if (length >= this.props.initialText.length) {
+      setTimeout(function() {this.setState({currentText: ''}); }.bind(this), 2000);
+      return}
+    this.props.handleKeyPress({ code:('key' + this.props.initialText[length].toUpperCase()) })
+  }
+
   handleUserInput(e) {
-    this.setState({userInput: e.target.value});
-    console.log('handled!')
+    this.setState({currentText: e.target.value});
+    for (var i = 0; i < e.target.value.length; i++) {
+      this.props.handleKeyPress({ code:('key' + e.target.value[i].toUpperCase()) })
+    }
   }
+
   render() {
     return (
       <div>
-        <textarea style={textareaStyle} value={this.state.userInput} type="text" onChange={this.handleUserInput}/>
-      </div>
+        <textarea style={textareaStyle} value={this.state.currentText} type="text" onChange={this.handleUserInput}/>
+      </div> //this.state.userInput
     );
   }
 }
