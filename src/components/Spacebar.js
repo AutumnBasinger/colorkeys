@@ -12,15 +12,12 @@ const spacebarStyle = {
 };
 
 export class Spacebar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {buttonText: 'Adding red'}
-  }
   render() {
-    //count spaces in this.props.currentText
-    //this.setState(buttonText: text according to spaces)
+    const messages = ['Adding red','Adding green','Adding blue']
+    var spaces = this.props.currentText.split(" ").length-1
+    var buttonText = messages[spaces%3]
     return (
-      <button style={spacebarStyle}>{this.state.buttonText}</button>
+      <button style={spacebarStyle}>{buttonText}</button>
     );
   }
 }

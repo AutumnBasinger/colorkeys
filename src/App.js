@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Spacebar } from './components/Spacebar.js'
-import { KeyParent } from './components/KeyParent.js'
+import { LetterKey } from './components/LetterKey.js'
 
 const textareaStyle = {
   height: 50,
@@ -52,7 +52,7 @@ class App extends Component {
   //calls automatically anytime state is changed
   render() {
     const letterMap = letterList.map((letter) =>
-      <KeyParent key={letter} letter={letter} currentText={this.state.currentText}/> );
+      <LetterKey key={letter} letter={letter} currentText={this.state.currentText}/> );
     return (
       <center>
         <textarea style={textareaStyle} value={this.state.currentText} type="text" onChange={this.handleChange}/>
