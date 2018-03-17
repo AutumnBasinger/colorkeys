@@ -11,13 +11,11 @@ const spacebarStyle = {
   borderRadius: 6
 };
 
-export class Spacebar extends React.Component {
-  render() {
+export const Spacebar = props => {
     const messages = ['Adding red','Adding green','Adding blue']
-    var spaces = this.props.currentText.split(" ").length-1
+    let spaces = props.currentText.split(" ").length-1
     var buttonText = messages[spaces%3]
     return (
       <button style={spacebarStyle}>{buttonText}</button>
     );
   }
-}

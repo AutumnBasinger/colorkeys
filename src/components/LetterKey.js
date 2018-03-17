@@ -1,17 +1,23 @@
 import React from 'react';
 
-export class LetterKey extends React.Component {
-  render() {
+export const LetterKey = props => {
     let colors = [[],[],[]]
-    var words = this.props.currentText.toUpperCase().split(' ')
-    for (var i=0; i<words.length; i++) {
+    let words = props.currentText.toUpperCase().split(' ')
+    for (let i=0; i<words.length; i++) {
       colors[i%3].push(words[i])
     }
-    var red = (colors[0].join('').split(this.props.letter).length-1)*51
-    var green = (colors[1].join('').split(this.props.letter).length-1)*51
-    var blue = (colors[2].join('').split(this.props.letter).length-1)*51
 
-    var keyStyle = {
+    let rgb = []
+    colors.forEach(color => {
+      let remainder = (color.join('').split(props.letter).length-1)%10
+      if (remainder > 5) {
+        rgb.push((10-remainder)*51)
+      } else {
+        rgb.push(remainder*51)
+      }
+    })
+
+    let keyStyle = {
       width: 60,
       height: 60,
       margin: 2,
@@ -19,11 +25,10 @@ export class LetterKey extends React.Component {
       color: 'white',
       border: 'none',
       borderRadius: 6,
-      background:'rgb(' + red + ',' + green + ',' + blue + ')'
+      background: 'rgb(' + String(rgb) + ')'
     };
 
     return (
-      <button style={keyStyle}> {this.props.letter} </button>
+      <button style={keyStyle}> {props.letter} </button>
     );
   }
-}
