@@ -17,9 +17,11 @@ class App extends Component {
     super(props);
     this.state = {
       currentText: '',
+      savedText: '',
       timer: null}
     this.handleInitialText = this.handleInitialText.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
     const timerID = setInterval(this.handleInitialText, 80);
@@ -34,6 +36,9 @@ class App extends Component {
       setTimeout(function() {this.setState({currentText: ''}); }.bind(this), 2000);
       return}
   }
+  handleClick(letter, message) {
+    console.log(letter, message)
+  }
   handleChange(e) {
     this.setState({currentText: e.target.value});
   }
@@ -41,7 +46,7 @@ class App extends Component {
     return (
       <center>
         <textarea style={textareaStyle} autoFocus value={this.state.currentText} type="text" onChange={this.handleChange}/>
-        <Board currentText={this.state.currentText}/>
+        <Board currentText={this.state.currentText} handleClick={this.handleClick}/>
         <Spacebar currentText={this.state.currentText}/>
       </center>
     );

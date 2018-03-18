@@ -29,6 +29,6 @@ export const LetterKey = props => {
     };
 
     return (
-      <button style={keyStyle}> {props.letter} </button>
+      <button style={keyStyle} onClick={ (e) => {props.handleClick(props.letter, props.message)} }> {props.letter} </button>
     );
   }
