@@ -40,7 +40,7 @@ class App extends Component {
   render() {
     return (
       <center>
-        <textarea style={textareaStyle} value={this.state.currentText} type="text" onChange={this.handleChange}/>
+        <textarea style={textareaStyle} autoFocus value={this.state.currentText} type="text" onChange={this.handleChange}/>
         <Board currentText={this.state.currentText}/>
         <Spacebar currentText={this.state.currentText}/>
       </center>
