@@ -6,33 +6,33 @@ export const Board = props => {
   'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
 
   let messages = [
-  'How dare you press my buttons!',
-  'omg omg omg omg omg omg omg omg',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test',
-  'test'
-  ]
+'Quit now. I said quit',
+'Whyyyyyyyyyyyy???',
+'Earlier I said stop...and you didn\'t?',
+'Really? Really??? You pressed me again?',
+'TTTTTTTT TASTY TASTY',
+'You...idk. Just idk.',
+'Ugh, like seriously?',
+'I said, don\'t press them!',
+'OMG OMG OMG OMG OMG OMG OMG OMG OMG OMG OMG',
+'Please stop. I hate it',
+'Ahhhhhh don\'t press me!',
+'Soooooo, you want to play that game?',
+'Duh, this thing is awesome',
+'Finally you pressed me!',
+'Greatttttt, you\'re so great at pressing my buttons',
+'How dare you press my buttons!',
+'Just stop. Stop it right now',
+'Kill me now',
+'Last time I\'m telling you...',
+'z zz zzz zzzz zzzzz zzzzzz zzzzzzz zzzzzzzz zzzzzzzzz zzzzzzzzzzz',
+'eXXXXXXXXcuse me',
+'Can you hear me??',
+'Very annoying of you to keep pressing my buttons',
+'Blah blah blah',
+'Nooooooooooooooo',
+'My my my...you are a stubborn one',
+]
 
   let keys = [];
 
@@ -41,10 +41,6 @@ export const Board = props => {
     keys.push(<LetterKey key={letters[i]} letter={letters[i]}
       handleClick={props.handleClick} currentText={props.currentText} message={messages[i]}/>)
   }
-
-  // letters.forEach(letter => {
-  //   keys.push(<LetterKey key={letter} letter={letter} onClick={props.onClick(messages[i])} currentText={props.currentText}/>)
-  // })
 
   return (
     <center>

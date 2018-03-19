@@ -18,26 +18,34 @@ class App extends Component {
     this.state = {
       currentText: '',
       savedText: '',
+      autoText: initialText,
       timer: null}
-    this.handleInitialText = this.handleInitialText.bind(this);
+    this.handleText = this.handleText.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    const timerID = setInterval(this.handleInitialText, 80);
+    const timerID = setInterval(this.handleText, 80);
     this.setState({timer: timerID})
   }
-  handleInitialText() {
-    if (this.state.currentText.length === initialText.length) {
-      clearInterval(this.state.timer)}
+  handleText() {
+    if (this.state.currentText.length === this.state.autoText.length) {
+      clearInterval(this.state.timer)
+    }
     const length = (this.state.currentText.length)
-    this.setState({ currentText: initialText.substr(0,length+1) });
-    if (length >= initialText.length) {
-      setTimeout(function() {this.setState({currentText: ''}); }.bind(this), 2000);
+    this.setState({ currentText: this.state.autoText.substr(0,length+1) });
+    if (length >= this.state.autoText.length) {
+      setTimeout(function() {this.setState({currentText: this.state.savedText, timer: null, savedText: ''}); }.bind(this), 2000);
       return}
   }
   handleClick(letter, message) {
-    console.log(letter, message)
+    if (this.state.timer === null && this.state.savedText === '') {
+      this.setState({savedText: this.state.currentText})
+      this.setState({currentText: ''})
+      this.setState({autoText: message})
+      const timerID = setInterval(this.handleText, 80);
+      this.setState({timer: timerID})
+    }
   }
   handleChange(e) {
     this.setState({currentText: e.target.value});
