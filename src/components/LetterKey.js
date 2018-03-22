@@ -18,13 +18,13 @@ export const LetterKey = props => {
     })
 
     let keyStyle = {
-      width: 60,
-      height: 60,
-      margin: 2,
-      fontSize: 20,
+      width: 80,
+      height: 80,
+      margin: 3,
+      fontSize: 25,
       color: 'white',
       border: 'none',
-      borderRadius: 6,
+      borderRadius: 8,
       background: 'rgb(' + String(rgb) + ')'
     };
 

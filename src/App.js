@@ -4,13 +4,14 @@ import { Spacebar } from './components/Spacebar.js'
 import { Board } from './components/Board.js'
 
 const textareaStyle = {
-  height: 50,
-  width: 450,
+  height: 60,
+  width: 580,
   padding: 5,
-  margin: 20
+  margin: 20,
+  fontSize: 16
 };
 
-const initialText = 'Type something here and watch the keys change colors!'
+const initialText = 'Welcome to the color keyboard!'
 
 class App extends Component {
   constructor(props) {
