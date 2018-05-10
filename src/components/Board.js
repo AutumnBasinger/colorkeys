@@ -1,5 +1,5 @@
 import React from 'react';
-import { LetterKey } from './LetterKey.js'
+import { LetterKey } from './LetterKey.js';
 
 let messages = [
 'QWERTY speaking, how can I help you?',

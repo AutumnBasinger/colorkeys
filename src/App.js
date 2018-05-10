@@ -3,15 +3,7 @@ import './App.css';
 import { Spacebar } from './components/Spacebar.js'
 import { Board } from './components/Board.js'
 
-const textareaStyle = {
-  height: 60,
-  width: 580,
-  padding: 5,
-  margin: 20,
-  fontSize: 16
-};
-
-const initialText = 'Welcome to the color keyboard!'
+const initialText = 'Put your cursor here and type away!'
 
 class App extends Component {
   constructor(props) {
@@ -54,7 +46,7 @@ class App extends Component {
   render() {
     return (
       <center>
-        <textarea style={textareaStyle} autoFocus value={this.state.currentText} type="text" onChange={this.handleChange}/>
+        <textarea className='textStyle' autoFocus value={this.state.currentText} type="text" onChange={this.handleChange}/>
         <Board currentText={this.state.currentText} handleClick={this.handleClick}/>
         <Spacebar currentText={this.state.currentText}/>
       </center>

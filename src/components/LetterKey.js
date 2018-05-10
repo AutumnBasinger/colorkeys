@@ -17,18 +17,8 @@ export const LetterKey = props => {
       }
     })
 
-    let keyStyle = {
-      width: 80,
-      height: 80,
-      margin: 3,
-      fontSize: 25,
-      color: 'white',
-      border: 'none',
-      borderRadius: 8,
-      background: 'rgb(' + String(rgb) + ')'
-    };
-
     return (
-      <button style={keyStyle} onClick={ (e) => {props.handleClick(props.letter, props.message)} }> {props.letter} </button>
+      <button className='keyStyle' style={{background: 'rgb(' + String(rgb) + ')'}}
+      onClick={ (e) => {props.handleClick(props.letter, props.message)} }> {props.letter} </button>
     );
   }
