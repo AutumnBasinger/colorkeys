@@ -41,9 +41,9 @@ export const Board = props => {
   }
   return (
     <center>
-      <center>{keys.slice(0,10)}</center>
-      <center>{keys.slice(10,19)}</center>
-      <center>{keys.slice(19,26)}</center>
+    <center>{keys.slice(0,10)}</center>
+    <center>{keys.slice(10,19)}</center>
+    <center>{keys.slice(19,26)}</center>
     </center>
   );
 }

@@ -7,18 +7,6 @@
   to { transform: rotate(360deg); }
 }
 
-body {
-  background-color: white;
-}
-
-.textStyle {
-  height: 60px;
-  width: 580px;
-  padding: 5px;
-  margin: 20px;
-  font-size: 16px;
-}
-
 .keyStyle {
   width: 80px;
   height: 80px;
@@ -29,29 +17,75 @@ body {
   border-radius: 8px;
 }
 
-@media (max-width: 900px) {
+.spaceStyle {
+  width: 360px;
+  height: 80px;
+  margin: 3px;
+  border-radius: 8px;
+  font-size: 25px;
+  color: white;
+  background: black;
+  border: none;
+}
+
+.textStyle {
+  height: 70px;
+  width: 80%;
+  padding: 5px;
+  margin: 20px;
+  font-size: 16px;
+}
+
+@media (max-width: 950px) {
   .keyStyle {
-    width: 60px;
-    height: 60px;
+    width: 6%;
+    margin: 2px;
     border-radius: 6px;
-    margin: 2.5px;
+    font-size: 20px;
+  }
+  .spaceStyle {
+    width: 30%;
+    height: 60px;
+    margin: 2px;
+    border-radius: 6px;
     font-size: 20px;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
   .keyStyle {
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
+    height: 80px;
+    margin: 1.5px;
+    border-radius: 5px;
+    font-size: 15px;
+  }
+  .spaceStyle {
+    border-radius: 5px;
     font-size: 15px;
     margin: 1.5px;
   }
+  .textStyle {
+    font-size: 14px;
+  }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 400px) {
+  .keyStyle {
+    font-size: 10px;
+    border-radius: 0px;
+    margin: 1px;
+  }
+  .spaceStyle {
+    border-radius: 0px;
+    width: 120px;
+  }
   .textStyle {
-    height: 30px;
-    width: 150px;
+    height: 60px;
+    font-size: 12px;
+    background-color: black;
+    color: white;
+  }
+  body {
+    background-color: black;
   }
 }

@@ -1,16 +1,5 @@
 import React, { Component } from 'react';
 
-const spacebarStyle = {
-  width: 330,
-  height: 80,
-  margin: 3,
-  fontSize: 25,
-  color: 'white',
-  background: 'black',
-  border: 'none',
-  borderRadius: 8
-};
-
 const clickMessages = ['WOAH!','HEY THERE!','HAHAHAHA']
 const addingMessages = ['Adding red','Adding green','Adding blue']
 
@@ -36,8 +25,7 @@ export class Spacebar extends Component {
     if (this.state.type === 'click') {var buttonText = this.state.clicked}
     else {buttonText = addingMessages[spaces%3]}
     return (
-      <button
-        style={spacebarStyle}
+      <button className='spaceStyle'
         onMouseDown={this.handleMouseDown}>
           {buttonText}
       </button>
