@@ -18,7 +18,7 @@
 }
 
 .spaceStyle {
-  width: 360px;
+  width: 320px;
   height: 80px;
   margin: 2.5px;
   border-radius: 8px;
@@ -30,54 +30,57 @@
 
 .textStyle {
   height: 70px;
-  width: 750px;
+  width: 800px;
   padding: 5px;
   margin: 20px;
   font-size: 16px;
 }
 
-@media (max-width: 900px) {
-  .keyStyle {
-    width: 8.5%;
+@media (max-width: 1000px) {
+  .keyStyle, .spaceStyle {
+    width: 55px;
+    height: 55px;
     border-radius: 6px;
-    font-size: 22px;
+    font-size: 20px;
+    margin: 2px;
   }
   .spaceStyle {
-    width: 40%;
-    border-radius: 6px;
-    font-size: 22px;
+    width: 220px;
   }
   .textStyle {
-    width: 80%;
+    width: 550px;
   }
 }
 
-@media (max-width: 650px) {
-  .keyStyle {
-    height: 80px;
-    margin: 2px;
-    border-radius: 5px;
-    font-size: 18px;
-  }
-  .spaceStyle {
-    border-radius: 5px;
-    margin: 2px;
-    font-size: 18px;
-  }
-  .textStyle {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 500px) {
-  .keyStyle {
-    font-size: 14px;
-    border-radius: 3px;
+@media (max-width: 800px) {
+  .keyStyle, .spaceStyle {
+    height: 40px;
+    width: 40px;
     margin: 1.5px;
-  }
-  .spaceStyle {
-    border-radius: 4px;
-    margin: 1.5px;
+    border-radius: 5px;
     font-size: 16px;
+  }
+  .spaceStyle {
+    width: 160px;
+  }
+  .textStyle {
+    font-size: 14px;
+    width: 400px;
+  }
+}
+
+@media (max-width: 450px) {
+  .keyStyle, .spaceStyle {
+    height: 25px;
+    width: 25px;
+    font-size: 10px;
+    border-radius: 4px;
+    margin: 1px;
+  }
+  .spaceStyle {
+    width: 100px;
+  }
+  .textStyle {
+    width: 250px;
   }
 }
