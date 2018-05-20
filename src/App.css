@@ -7,6 +7,23 @@
   to { transform: rotate(360deg); }
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: lightgrey;
+}
+
+.intro {
+  font-size: 25px;
+  text-align: center;
+  font-family: monospace;
+  width: 800px;
+  padding: 20px;
+}
+
 .keyStyle {
   width: 80px;
   height: 80px;
@@ -15,6 +32,7 @@
   color: white;
   border: none;
   border-radius: 8px;
+  text-align: center;
 }
 
 .spaceStyle {
@@ -37,7 +55,7 @@
 }
 
 @media (max-width: 1000px) {
-  .keyStyle, .spaceStyle {
+  .keyStyle, .spaceStyle, .intro {
     width: 55px;
     height: 55px;
     border-radius: 6px;
@@ -47,13 +65,13 @@
   .spaceStyle {
     width: 220px;
   }
-  .textStyle {
+  .textStyle, .intro {
     width: 550px;
   }
 }
 
 @media (max-width: 800px) {
-  .keyStyle, .spaceStyle {
+  .keyStyle, .spaceStyle, .intro {
     height: 40px;
     width: 40px;
     margin: 1.5px;
@@ -63,14 +81,14 @@
   .spaceStyle {
     width: 160px;
   }
-  .textStyle {
+  .textStyle, .intro {
     font-size: 14px;
     width: 400px;
   }
 }
 
 @media (max-width: 450px) {
-  .keyStyle, .spaceStyle {
+  .keyStyle, .spaceStyle, .intro {
     height: 25px;
     width: 25px;
     font-size: 10px;
@@ -80,7 +98,7 @@
   .spaceStyle {
     width: 100px;
   }
-  .textStyle {
+  .textStyle, .intro {
     width: 250px;
   }
 }
